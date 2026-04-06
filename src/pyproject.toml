@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "multichannel_npy_viewer"
+version = "0.1.0"
+description = "Multichannel NPY Viewer"
+readme = "README.md"
+authors = [{name = "Fernando Pujaico Rivera", email = "fernando.pujaico.rivera@gmail.com"}]
+maintainers = [{name = "Fernando Pujaico Rivera", email = "fernando.pujaico.rivera@gmail.com"}]
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+license = "GPL-3.0-only WITH Classpath-Exception-2.0 OR BSD-3-Clause"
+license-files = ["LICENSE"]
+keywords = ["numpy", "image"]
+dependencies = [
+    "numpy",
+    "matplotlib"
+]
+
+[project.urls]
+"Bug Reports" = "https://github.com/trucomanx/MultichannelNpyViewer/issues"
+"Funding" = "https://trucomanx.github.io/en/funding.html"
+"Documentation" = "https://github.com/trucomanx/MultichannelNpyViewer/tree/main/doc"
+"Source" = "https://github.com/trucomanx/MultichannelNpyViewer"
+
+[project.scripts]
+"multichannel-npy-viewer" = "multichannel_npy_viewer.program:main"
+
+[tool.setuptools]
+packages = ["multichannel_npy_viewer", "multichannel_npy_viewer.modules"]
