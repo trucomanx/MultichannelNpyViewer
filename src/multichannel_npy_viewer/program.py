@@ -5,6 +5,7 @@ import math
 import numpy as np
 import matplotlib.pyplot as plt
 
+import multichannel_npy_viewer.about as about
 from multichannel_npy_viewer.modules.wabout import show_about
 #Multichannel NPY Viewer
 
@@ -72,7 +73,10 @@ def show_npy_image(npy_path):
 def main():
 
     if len(sys.argv) < 2:
-        print(f"Use: python3 {sys.argv[0]} /path/to/arquivo.npy")
+        print("\n")
+        print(f"Use: {about.__program_name__} /path/to/arquive.npy")
+        print(f"Use: {about.__program_name__} --about")
+        print("\n")
         sys.exit(1)
 
     npy_path = sys.argv[1]
