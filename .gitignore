@@ -1,2 +1,6 @@
 /src/multichannel_npy_viewer/__pycache__/
 /src/multichannel_npy_viewer/modules/__pycache__/
+/src/build/
+/src/dist/
+/venv-temporal/
+/src/multichannel_npy_viewer.spec
