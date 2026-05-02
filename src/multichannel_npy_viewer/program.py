@@ -7,6 +7,10 @@ import matplotlib.pyplot as plt
 
 import multichannel_npy_viewer.about as about
 from multichannel_npy_viewer.modules.wabout import show_about
+from multichannel_npy_viewer.desktop  import create_desktop_file 
+from multichannel_npy_viewer.desktop  import create_desktop_directory
+from multichannel_npy_viewer.desktop  import create_desktop_menu
+from multichannel_npy_viewer.mimetype import ensure_mime_type
 #Multichannel NPY Viewer
 
 def show_npy_image(npy_path):
@@ -69,28 +73,42 @@ def show_npy_image(npy_path):
         print(f"Problem with shape {imagem.shape} : {npy_path}")
         sys.exit(1)
 
-
-def main():
-
-    if len(sys.argv) < 2:
+def help():
         print("\n")
         print(f"Use: {about.__program_name__} /path/to/arquive.npy")
         print(f"Use: {about.__program_name__} --about")
         print("\n")
+
+def main():
+    
+    ensure_mime_type("npy", "application/x-npy", "NumPy array file")
+    
+    extras="MimeType=application/x-npy;"
+    #create_desktop_directory()    
+    #create_desktop_menu()
+    create_desktop_file('~/.local/share/applications', extras=extras)
+
+    if len(sys.argv) < 2:
+        help()
         sys.exit(1)
-
-    npy_path = sys.argv[1]
     
-    if not npy_path.lower().endswith(".npy"):
-        if npy_path == "--about":
+    for n in range(1,len(sys.argv)):
+        if sys.argv[n] == "--applications":
+            #create_desktop_directory(overwrite = True)
+            #create_desktop_menu(overwrite = True)
+            create_desktop_file('~/.local/share/applications', overwrite=True, extras=extras)
+
+        elif sys.argv[n] == "--about":
             show_about()
-            return
-        else:
-            print("Error: file must be .npy")
-            sys.exit(1)
-    
-    show_npy_image(npy_path)
 
+        elif sys.argv[n].lower().endswith(".npy"):
+            show_npy_image(sys.argv[n])
+            return
+            
+        else:
+            help()
+            return
+    
 
 if __name__ == "__main__":
     main()
