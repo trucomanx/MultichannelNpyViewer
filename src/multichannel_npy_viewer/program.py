@@ -45,8 +45,23 @@ def show_npy_image(npy_path):
                 rgb = imagem[:, :, 0:3]
 
             plt.figure()
+            
+            MIN, MAX = rgb.min(), rgb.max()
+            dtype = rgb.dtype    
+            
+            rgb = rgb.astype(np.float32)
+
+            if   MIN >= 0.0 and MAX <= 1.0:
+                pass
+            elif MIN >= 0.0 and MAX > 1.0 and MAX < 255.0:
+                rgb = rgb / 255.0
+            else:
+                denom=MAX-MIN
+                if denom!=0:
+                    rgb = (rgb-MIN)/denom
+            
             plt.imshow(rgb)
-            plt.title(f"Channel[0:3]")
+            plt.title(f"Channel[0:3]\n{dtype} [{MIN}, {MAX}]")
             plt.axis('off')
 
         # Grid quadrado
@@ -57,8 +72,19 @@ def show_npy_image(npy_path):
         axes = axes.flatten() if num_channels > 1 else [axes]
 
         for i in range(num_channels):
-            axes[i].imshow(channels[i], cmap='gray')
-            axes[i].set_title(f"Channel{i}")
+            rgb = channels[i]
+            
+            MIN, MAX = rgb.min(), rgb.max()
+            dtype = rgb.dtype   
+            
+            rgb = rgb.astype(np.float32)
+
+            denom=rgb.max()-rgb.min()
+            if denom!=0:
+                rgb = (rgb-rgb.min())/denom
+            
+            axes[i].imshow(rgb, cmap='gray')
+            axes[i].set_title(f"Channel{i}\n{dtype} [{MIN}, {MAX}]")
             axes[i].axis('off')
 
         # Desligar subplots extras

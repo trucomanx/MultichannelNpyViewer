@@ -18,10 +18,10 @@ cd src
 
 
 ## ubuntu ##
-python3 -m PyInstaller --onefile --windowed --name multichannel_npy_viewer --collect-all PyQt5 program_launcher.py
+python3 -m PyInstaller --onefile --windowed --name multichannel_npy_viewer --add-data "multichannel_npy_viewer/icons:icons" --collect-all PyQt5  program_launcher.py
 
 ## windows ##
-python -m PyInstaller --onefile --windowed --name multichannel_npy_viewer --collect-all PyQt5 program_launcher.py
+python -m PyInstaller --onefile --windowed --name multichannel_npy_viewer --add-data "multichannel_npy_viewer/icons;icons" --collect-all PyQt5  program_launcher.py
 
 '''
 

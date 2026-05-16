@@ -69,6 +69,7 @@ jobs:
           cd src
           python -m PyInstaller --onefile --windowed \
             --name multichannel_npy_viewer \
+            --add-data "multichannel_npy_viewer/icons:icons" \
             --collect-all PyQt5 \
             program_launcher.py
 
@@ -79,6 +80,7 @@ jobs:
           cd src
           python -m PyInstaller --onefile --windowed `
             --name multichannel_npy_viewer `
+            --add-data "multichannel_npy_viewer/icons;icons" `
             --collect-all PyQt5 `
             program_launcher.py
 

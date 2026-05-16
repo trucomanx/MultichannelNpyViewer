@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "multichannel_npy_viewer"
-version = "0.1.1"
+version = "0.1.2"
 description = "Multichannel NPY Viewer"
 readme = "README.md"
 authors = [{name = "Fernando Pujaico Rivera", email = "fernando.pujaico.rivera@gmail.com"}]
@@ -33,3 +33,6 @@ dependencies = [
 
 [tool.setuptools]
 packages = ["multichannel_npy_viewer", "multichannel_npy_viewer.modules"]
+
+[tool.setuptools.package-data]
+"multichannel_npy_viewer" = ["icons/*.png"]
