@@ -66,7 +66,8 @@ def show_npy_image(npy_path):
 
         # Grid quadrado
         n = math.ceil(math.sqrt(num_channels))
-        fig, axes = plt.subplots(n, n)
+        nr= math.ceil(num_channels/n)
+        fig, axes = plt.subplots(nr, n)
 
         # Flatten axes (caso n>1)
         axes = axes.flatten() if num_channels > 1 else [axes]
