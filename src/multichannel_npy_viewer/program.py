@@ -61,7 +61,7 @@ def show_npy_image(npy_path):
                     rgb = (rgb-MIN)/denom
             
             plt.imshow(rgb)
-            plt.title(f"Channel[0:3]\n{dtype} [{MIN}, {MAX}]")
+            plt.title(f"Channel[0:3]\ndtype:{dtype}\nmin:{MIN:.4f}\nmax:{MAX:.4f}")
             plt.axis('off')
 
         # Grid quadrado
@@ -84,7 +84,7 @@ def show_npy_image(npy_path):
                 rgb = (rgb-rgb.min())/denom
             
             axes[i].imshow(rgb, cmap='gray')
-            axes[i].set_title(f"Channel{i}\n{dtype} [{MIN}, {MAX}]")
+            axes[i].set_title(f"Channel{i}\ndtype:{dtype}\nmin:{MIN:.4f}\nmax:{MAX:.4f}")
             axes[i].axis('off')
 
         # Desligar subplots extras
